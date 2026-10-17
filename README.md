@@ -1,6 +1,6 @@
-# treedom
+# pw2-arvoredom
 
-[Ver página](https://thiagocloudnet.github.io/treedom/) · [Abrir no Codespaces](https://codespaces.new/thiagocloudnet/treedom) · [Publicações](https://github.com/thiagocloudnet/treedom/actions/workflows/pages.yml)
+[Ver página](https://thiagocloudnet.github.io/pw2-arvoredom/) · [Abrir no Codespaces](https://codespaces.new/thiagocloudnet/pw2-arvoredom) · [Publicações](https://github.com/thiagocloudnet/pw2-arvoredom/actions/workflows/pages.yml)
 
 # Manipulação da árvore DOM
 
@@ -29,7 +29,7 @@ Consulte TESTES.md para os resultados desta reescrita. A confirmação local nã
 
 ## Repositório
 
-https://github.com/thiagocloudnet/treedom
+https://github.com/thiagocloudnet/pw2-arvoredom
 
 Implementação front-end acadêmica, sem backend ou dependências externas.
 
@@ -37,7 +37,7 @@ Implementação front-end acadêmica, sem backend ou dependências externas.
 
 O workflow .github/workflows/pages.yml publica somente os cinco arquivos da aplicação, após conferir a sintaxe JavaScript. Em Settings → Pages → Build and deployment, selecione GitHub Actions. Um push em main executa a publicação.
 
-Endereço esperado após um deploy bem-sucedido: https://thiagocloudnet.github.io/treedom/.
+Endereço esperado após um deploy bem-sucedido: https://thiagocloudnet.github.io/pw2-arvoredom/.
 
 ## Codespaces
 
