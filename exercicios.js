@@ -5,6 +5,11 @@
  */
 "use strict";
 
+// A impressão preserva o estado atual sem aprovar operações pendentes.
+document.getElementById("btn-salvar-pdf").addEventListener("click", function () {
+  window.print();
+});
+
 const selecionar = (id) => document.getElementById(id);
 const TEXTO_TITULO = "Bem-vindo ao Curso de Desenvolvimento de Sistemas!";
 

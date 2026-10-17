@@ -1,4 +1,10 @@
 /* thiago.cloud | Autoria: Thiago Ferreira Prates Neves. */
+.acoes-relatorio { margin: 20px 0; padding: 16px; border: 1px solid #dce2ef; border-radius: 10px; }
+@media print {
+  .acoes-relatorio { display: none; }
+  a { overflow-wrap: anywhere; }
+  .resultado { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
 :root {
   color-scheme: light;
   --fundo: #f3f4f5;
