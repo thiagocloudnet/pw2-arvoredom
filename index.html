@@ -1,0 +1,226 @@
+<!doctype html>
+<!-- thiago.cloud | Autoria do código: Thiago Ferreira Prates Neves. -->
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Thiago Ferreira Prates Neves">
+  <meta name="description" content="Laboratório acadêmico de cinco exercícios de manipulação DOM.">
+  <title>Manipulação da árvore DOM — Programação Web II</title>
+  <link rel="stylesheet" href="estilo.css?v=claro3">
+  <script src="exercicios.js?v=claro3" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="instituicao">
+        <img src="marca-1.png" alt="Brasão da UESB">
+        <div>UNIVERSIDADE ESTADUAL DO SUDOESTE DA BAHIA — UESB<br>CENTRO DE EDUCAÇÃO ABERTA E A DISTÂNCIA — CEAD<br>UNIVERSIDADE ABERTA DO BRASIL — UAB</div>
+        <img src="marca-0.png" alt="Marca da UAB">
+      </div>
+      <p class="curso">Tecnologia em Análise e Desenvolvimento de Sistemas</p>
+      <div class="tabela-rolagem">
+        <table>
+          <caption>Identificação acadêmica</caption>
+          <tbody>
+            <tr><th scope="row">Disciplina</th><td>Programação Web II (2026.2)</td><th scope="row">Professor</th><td>Lucas Santos de Oliveira</td></tr>
+            <tr><th scope="row">Discente / autor</th><td>Thiago Ferreira Prates Neves</td><th scope="row">Matrícula</th><td>202511865</td></tr>
+            <tr><th scope="row">Polo</th><td>UAB Brumado — BA</td><th scope="row">Semestre</th><td>4º semestre</td></tr>
+            <tr><th scope="row">Atividade</th><td>Manipulação de árvore DOM</td><th scope="row">Vencimento</th><td>16/10/2026, às 23h59</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h1>Exercícios de manipulação da árvore DOM</h1>
+      <p class="subtitulo">Seleção, criação, classes CSS, remoção e eventos em JavaScript</p>
+      <p class="instrucao">Execute cada demonstração. O resultado fica verde somente após a operação e a conferência do critério no DOM. Os exemplos mostram o código essencial; exercicios.js inclui os eventos e as verificações adicionais. Recarregue para restaurar os dados.</p>
+    </header>
+    <nav aria-label="Exercícios">
+      <a href="#exercicio-1">Exercício 1</a>
+      <a href="#exercicio-2">Exercício 2</a>
+      <a href="#exercicio-3">Exercício 3</a>
+      <a href="#exercicio-4">Exercício 4</a>
+      <a href="#exercicio-5">Exercício 5</a>
+    </nav>
+    <section id="exercicio-1" aria-labelledby="titulo-1">
+      <h2 id="titulo-1">1. Alterando o Conteúdo de um Elemento</h2>
+      <div class="enunciado">
+        <p>Para praticar a busca e modificação de elementos na tela, considere o cenário em que existe um título principal com texto desatualizado. Dada a estrutura HTML descrita a seguir, escreva o código JavaScript necessário para selecionar o elemento com o identificador &quot;titulo-boas-vindas&quot; e alterar seu conteúdo textual para &quot;Bem-vindo ao Curso de Desenvolvimento de Sistemas!&quot;.</p>
+        <pre><code>&lt;div id=&quot;container&quot;&gt;
+  &lt;h1 id=&quot;titulo-boas-vindas&quot;&gt;Texto Inicial...&lt;/h1&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+      <h3>Resposta técnica</h3>
+      <p>getElementById seleciona o título. textContent substitui seu conteúdo como texto literal. O botão executa a operação e confere a mensagem resultante.</p>
+      <h3>Código essencial</h3>
+      <pre><code>const titulo = document.getElementById(&quot;titulo-boas-vindas&quot;);
+titulo.textContent = &quot;Bem-vindo ao Curso de Desenvolvimento de Sistemas!&quot;;</code></pre>
+      <div class="demonstracao">
+        <h3>Demonstração prática</h3>
+        <button id="btn-testar-1" type="button">Executar e testar alteração do texto</button>
+<div id="container"><h2 id="titulo-boas-vindas">Texto Inicial...</h2></div>
+      </div>
+      <aside class="verificacao" aria-label="Verificação do exercício 1">
+        <div class="tabela-rolagem">
+          <table>
+            <caption>Critério do exercício 1</caption>
+            <thead><tr><th scope="col">Operação</th><th scope="col">Resultado esperado</th></tr></thead>
+            <tbody><tr><th scope="row">Teste no DOM</th><td>Mensagem exata no título.</td></tr></tbody>
+          </table>
+        </div>
+        <p id="resultado-1" class="resultado pendente" role="status">Não testado — execute a demonstração.</p>
+      </aside>
+    </section>
+    <section id="exercicio-2" aria-labelledby="titulo-2">
+      <h2 id="titulo-2">2. Criando e Adicionando Elementos Dinamicamente</h2>
+      <div class="enunciado">
+        <p>A criação de elementos em tempo de execução é fundamental para interfaces dinâmicas. Considerando uma lista de tarefas vazia ou parcialmente preenchida, crie uma função em JavaScript chamada <code>adicionarItem</code> que receba um parâmetro do tipo texto. Essa função deve criar um novo item de lista e anexá-lo ao final da lista não ordenada que possui o identificador &quot;lista-tarefas&quot;.</p>
+        <pre><code>&lt;h2&gt;Minha Lista de Tarefas&lt;/h2&gt;
+&lt;ul id=&quot;lista-tarefas&quot;&gt;
+  &lt;li&gt;Estudar sintaxe básica do JS&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+      </div>
+      <h3>Resposta técnica</h3>
+      <p>createElement cria um li e appendChild o insere ao final. A função recebe o texto e preserva a ordem e as referências dos itens anteriores.</p>
+      <h3>Código essencial</h3>
+      <pre><code>function adicionarItem(texto) {
+  const lista = document.getElementById(&quot;lista-tarefas&quot;);
+  const item = document.createElement(&quot;li&quot;);
+  item.textContent = texto;
+  lista.appendChild(item);
+}</code></pre>
+      <div class="demonstracao">
+        <h3>Demonstração prática</h3>
+        <h3>Minha Lista de Tarefas</h3>
+<ul id="lista-tarefas"><li>Estudar sintaxe básica do JS</li></ul>
+<form id="form-tarefa"><label for="nova-tarefa">Nova tarefa</label>
+<div class="controles"><input id="nova-tarefa" type="text" required><button type="submit">Adicionar tarefa</button></div></form>
+      </div>
+      <aside class="verificacao" aria-label="Verificação do exercício 2">
+        <div class="tabela-rolagem">
+          <table>
+            <caption>Critério do exercício 2</caption>
+            <thead><tr><th scope="col">Operação</th><th scope="col">Resultado esperado</th></tr></thead>
+            <tbody><tr><th scope="row">Teste no DOM</th><td>Novo item no final; itens existentes preservados.</td></tr></tbody>
+          </table>
+        </div>
+        <p id="resultado-2" class="resultado pendente" role="status">Não testado — execute a demonstração.</p>
+      </aside>
+    </section>
+    <section id="exercicio-3" aria-labelledby="titulo-3">
+      <h2 id="titulo-3">3. Alternando e Alterando Estilos CSS com classList</h2>
+      <div class="enunciado">
+        <p>A alteração visual de componentes no navegador deve ser feita prioritariamente por meio de classes CSS. Com base na estrutura a seguir, escreva um script em JavaScript para selecionar o elemento contêiner com o identificador &quot;painel&quot;, remover a classe &quot;oculto&quot; para torná-lo visível e aplicar a classe &quot;destaque&quot; para modificar sua apresentação visual.</p>
+        <pre><code>&lt;style&gt;
+  .destaque { background-color: #fef08a;
+          border: 2px solid #eab308;
+          padding: 12px; }
+  .oculto { display: none; }
+&lt;/style&gt;
+
+&lt;div id=&quot;painel&quot; class=&quot;oculto&quot;&gt;
+  &lt;p&gt;Mensagem importante para o usuário!&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+      <h3>Resposta técnica</h3>
+      <p>classList.remove retira oculto e classList.add aplica destaque. A conferência verifica as classes e os estilos computados nos quatro lados do painel.</p>
+      <h3>Código essencial</h3>
+      <pre><code>const painel = document.getElementById(&quot;painel&quot;);
+painel.classList.remove(&quot;oculto&quot;);
+painel.classList.add(&quot;destaque&quot;);</code></pre>
+      <div class="demonstracao">
+        <h3>Demonstração prática</h3>
+        <button id="btn-testar-3" type="button">Executar e testar classes CSS</button>
+<div id="painel" class="oculto"><p>Mensagem importante para o usuário!</p></div>
+      </div>
+      <aside class="verificacao" aria-label="Verificação do exercício 3">
+        <div class="tabela-rolagem">
+          <table>
+            <caption>Critério do exercício 3</caption>
+            <thead><tr><th scope="col">Operação</th><th scope="col">Resultado esperado</th></tr></thead>
+            <tbody><tr><th scope="row">Teste no DOM</th><td>Painel visível com fundo, bordas e espaçamentos exigidos.</td></tr></tbody>
+          </table>
+        </div>
+        <p id="resultado-3" class="resultado pendente" role="status">Não testado — execute a demonstração.</p>
+      </aside>
+    </section>
+    <section id="exercicio-4" aria-labelledby="titulo-4">
+      <h2 id="titulo-4">4. Remoção de Elementos da Árvore</h2>
+      <div class="enunciado">
+        <p>O gerenciamento da árvore de elementos exige a capacidade de excluir nós desnecessários. Dada a lista de notificações mostrada no código HTML abaixo, desenvolva uma função em JavaScript denominada <code>removerPrimeiraNotificacao</code>. Essa função deve localizar a lista pelo seu identificador &quot;notificacoes&quot; e remover apenas a primeira notificação contida nela sempre que for executada.</p>
+        <pre><code>&lt;ul id=&quot;notificacoes&quot;&gt;
+  &lt;li id=&quot;notif-1&quot;&gt;Notificação 1: Atualização de sistema&lt;/li&gt;
+  &lt;li id=&quot;notif-2&quot;&gt;Notificação 2: Novo e-mail recebido&lt;/li&gt;
+  &lt;li id=&quot;notif-3&quot;&gt;Notificação 3: Lembrete de aula&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+      </div>
+      <h3>Resposta técnica</h3>
+      <p>querySelector(&quot;:scope &gt; li&quot;) encontra a primeira notificação diretamente pertencente à lista. remove exclui somente esse elemento; uma verificação impede erro quando a lista está vazia.</p>
+      <h3>Código essencial</h3>
+      <pre><code>function removerPrimeiraNotificacao() {
+  const lista = document.getElementById(&quot;notificacoes&quot;);
+  const primeira = lista.querySelector(&quot;:scope &gt; li&quot;);
+  if (primeira) {
+    primeira.remove();
+  }
+}</code></pre>
+      <div class="demonstracao">
+        <h3>Demonstração prática</h3>
+        <ul id="notificacoes">
+<li id="notif-1">Notificação 1: Atualização de sistema</li>
+<li id="notif-2">Notificação 2: Novo e-mail recebido</li>
+<li id="notif-3">Notificação 3: Lembrete de aula</li>
+</ul>
+<button id="btn-remover" type="button">Remover primeira notificação</button>
+<p id="estado-notificacoes" role="status"></p>
+      </div>
+      <aside class="verificacao" aria-label="Verificação do exercício 4">
+        <div class="tabela-rolagem">
+          <table>
+            <caption>Critério do exercício 4</caption>
+            <thead><tr><th scope="col">Operação</th><th scope="col">Resultado esperado</th></tr></thead>
+            <tbody><tr><th scope="row">Teste no DOM</th><td>Somente a primeira notificação removida; ordem preservada.</td></tr></tbody>
+          </table>
+        </div>
+        <p id="resultado-4" class="resultado pendente" role="status">Não testado — execute a demonstração.</p>
+      </aside>
+    </section>
+    <section id="exercicio-5" aria-labelledby="titulo-5">
+      <h2 id="titulo-5">5. Manipulação com Eventos de Clique</h2>
+      <div class="enunciado">
+        <p>A interatividade em aplicações web é alcançada pela captura de ações do usuário. Utilizando a estrutura HTML abaixo, construa um script em JavaScript que escute o evento de clique do botão com o identificador &quot;btn-exibir&quot;. Ao ser acionado, o script deve capturar o texto digitado no campo de entrada com o identificador &quot;campo-nome&quot; e exibir uma mensagem personalizada dentro do parágrafo com o identificador &quot;resposta&quot;.</p>
+        <pre><code>&lt;div&gt;
+  &lt;input type=&quot;text&quot; id=&quot;campo-nome&quot; placeholder=&quot;Digite seu nome&quot;&gt;
+  &lt;button id=&quot;btn-exibir&quot;&gt;Exibir Mensagem&lt;/button&gt;
+  &lt;p id=&quot;resposta&quot;&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+      <h3>Resposta técnica</h3>
+      <p>addEventListener registra o clique. value recupera o nome e trim elimina espaços nas extremidades. textContent apresenta uma mensagem literal; entrada vazia recebe orientação.</p>
+      <h3>Código essencial</h3>
+      <pre><code>document.getElementById(&quot;btn-exibir&quot;).addEventListener(&quot;click&quot;, function () {
+  const nome = document.getElementById(&quot;campo-nome&quot;).value.trim();
+  document.getElementById(&quot;resposta&quot;).textContent = nome
+    ? `Olá, ${nome}! Bem-vindo ao estudo de manipulação do DOM!`
+    : &quot;Digite seu nome para receber uma mensagem.&quot;;
+});</code></pre>
+      <div class="demonstracao">
+        <h3>Demonstração prática</h3>
+        <label for="campo-nome">Seu nome</label>
+<div class="controles"><input id="campo-nome" type="text" placeholder="Digite seu nome"><button id="btn-exibir" type="button">Exibir Mensagem</button></div>
+<p id="resposta" role="status"></p>
+      </div>
+      <aside class="verificacao" aria-label="Verificação do exercício 5">
+        <div class="tabela-rolagem">
+          <table>
+            <caption>Critério do exercício 5</caption>
+            <thead><tr><th scope="col">Operação</th><th scope="col">Resultado esperado</th></tr></thead>
+            <tbody><tr><th scope="row">Teste no DOM</th><td>Mensagem personalizada após o clique e preenchimento do nome.</td></tr></tbody>
+          </table>
+        </div>
+        <p id="resultado-5" class="resultado pendente" role="status">Não testado — execute a demonstração.</p>
+      </aside>
+    </section>
+    <footer>Autor: Thiago Ferreira Prates Neves · Programação Web II · 2026.2</footer>
+  </main>
+</body>
+</html>

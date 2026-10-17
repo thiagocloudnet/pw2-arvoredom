@@ -1,0 +1,9 @@
+# Arquivos locais e pacotes de distribuição
+.env
+.env.*
+!.env.example
+node_modules/
+*.zip
+*.tmp
+.DS_Store
+Thumbs.db
