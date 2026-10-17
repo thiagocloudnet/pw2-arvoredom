@@ -30,3 +30,19 @@ Consulte TESTES.md para os resultados desta reescrita. A confirmação local nã
 https://github.com/thiagocloudnet/treedom
 
 Implementação front-end acadêmica, sem backend ou dependências externas.
+
+## Publicação no GitHub Pages
+
+O workflow .github/workflows/pages.yml publica somente os cinco arquivos da aplicação, após conferir a sintaxe JavaScript. Em Settings → Pages → Build and deployment, selecione GitHub Actions. Um push em main executa a publicação.
+
+Endereço esperado após um deploy bem-sucedido: https://thiagocloudnet.github.io/treedom/.
+
+## Codespaces
+
+Abra Code → Codespaces → Create codespace on main. A configuração .devcontainer/devcontainer.json prepara Node.js e a porta 8080. No terminal, execute:
+
+    node servidor.cjs
+
+Abra a prévia da porta 8080. Encerre o Codespace ao terminar. A configuração foi preparada localmente; a criação e execução na nuvem ainda não foram verificadas.
+
+O servidor local atende somente os arquivos públicos definidos; o GitHub Pages serve diretamente os arquivos estáticos. Nenhuma dependência npm é necessária.
