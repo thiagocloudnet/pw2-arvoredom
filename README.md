@@ -1,5 +1,7 @@
 # treedom
 
+[Ver página](https://thiagocloudnet.github.io/treedom/) · [Abrir no Codespaces](https://codespaces.new/thiagocloudnet/treedom) · [Publicações](https://github.com/thiagocloudnet/treedom/actions/workflows/pages.yml)
+
 # Manipulação da árvore DOM
 
 Autor: Thiago Ferreira Prates Neves. Programação Web II (2026.2), UESB.
